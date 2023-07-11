@@ -1,0 +1,68 @@
+package br.edu.univas;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+ class CadastroProfessor {
+
+    public static void main(String[] args) {
+        List<Professor> listaProfessores = new ArrayList<>();
+
+        cadastrarProfessor(listaProfessores);
+
+        // Exemplo: Imprimir os professores cadastrados
+        System.out.println("Professores cadastrados:");
+        for (Professor professor : listaProfessores) {
+            System.out.println(professor);
+        }
+    }
+
+    public static void cadastrarProfessor(List<Professor> listaProfessores) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o nome do professor: ");
+        String nome = scanner.nextLine();
+
+        System.out.print("Digite o ID do professor: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer do scanner
+
+        System.out.print("Digite a disciplina do professor: ");
+        String disciplina = scanner.nextLine();
+
+        Professor professor = new Professor(nome, id, disciplina);
+        listaProfessores.add(professor);
+
+        System.out.println("Professor cadastrado com sucesso!");
+    }
+}
+
+class Professor {
+    private final String nome;
+    private final int id;
+    private final String disciplina;
+
+    public Professor(String nome, int id, String disciplina) {
+        this.nome = nome;
+        this.id = id;
+        this.disciplina = disciplina;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getDisciplina() {
+        return disciplina;
+    }
+
+    @Override
+    public String toString() {
+        return "Nome: " + nome + ", ID: " + id + ", Disciplina: " + disciplina;
+    }
+}
